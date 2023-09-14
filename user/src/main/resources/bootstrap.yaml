@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: user-service-dubbo
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.175.1:8848
+        username: nacos
+        password: nacos
+        group: DEFAULT_GROUP
+        namespace: 893baa01-8f34-41c0-b5d6-dd3d17d158e6
+      config:
+        server-addr: 192.168.175.1:8848
+        username: nacos
+        password: nacos
+        group: DEFAULT_GROUP
+        file-extension: yaml
+        refresh: true
+        enabled: true
+        namespace: 893baa01-8f34-41c0-b5d6-dd3d17d158e6
+        extension-configs:
+          - data-id: user-service.yaml
+            group: DEFAULT_GROUP
+            refresh: true

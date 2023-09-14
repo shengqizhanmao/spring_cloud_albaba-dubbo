@@ -1,0 +1,34 @@
+server:
+  port: 10002
+spring:
+  application:
+    name: Gateway-service-dubbo
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.175.1:8848
+        username: nacos
+        password: nacos
+        namespace: 893baa01-8f34-41c0-b5d6-dd3d17d158e6
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: user-service
+          uri: lb://user-service-dubbo
+          predicates:
+            - Path=/user/**
+        - id: order-service-dubbo
+          uri: http://localhost:9991
+          predicates:
+            - Path=/order/**
+        - id: order-service-dubbo
+          uri: http://localhost:9992
+          predicates:
+            - Path=/order/**
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: 127.0.0.1:10003
+      web-context-unify: false
